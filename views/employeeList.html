@@ -1,0 +1,89 @@
+<html>
+<body>
+<p>
+      <a href="/employee?ui_action=getEmpList">Home</a> | 
+      <a href="/account">Account</a> | 
+      <a href="/logout">Log Out</a>
+</p>
+<fieldset>
+<legend>Employee Create</legend>
+<% if( flag  == 'I'){ %>
+<div id="list">
+  <form action="saveEmp" method="post" accept-charset="utf-8">
+    <div class="item-new">
+      <input class="input" type="hidden" name="ui_action" value="saveEmp">
+      <input class="input" type="text" name="empName" />
+      <input class="input" type="submit" name="submit" value="Add" >
+    </div>
+  </form>
+
+</div>
+<% }  %>
+
+
+
+<% if( flag  == 'U'){ %>
+<div id="list">
+	<% empedit.forEach( function ( empedit ){ %>
+  <form action="/saveEmp?id=<%= empedit._id %>" method="post" accept-charset="utf-8">
+    <div class="item-new">
+      <input class="input" type="hidden" name="ui_action" value="saveEmp">
+      <input class="input" type="hidden" name="id" value="<%=empedit._id%>">
+      <input class="input" type="text"  name="empName" value="<%= empedit.empName %>" />
+      <input class="input" type="submit" name="submit" value="Update" >
+    </div>
+  </form>
+  <% }); %>
+</div>
+<% }  %>
+</fieldset>
+
+
+
+<br/>
+<% if( flag  == 'I' && emplist){ %>
+<fieldset>
+<legend>Employee Info</legend>
+ <div class="item">
+<% emplist.forEach( function ( emplist ){ %>
+<br/>
+<tr>
+ 	<a class="update-link" href="employee?id=<%= emplist._id %>&ui_action=getEmpDetail" title="Update this todo item"><%= emplist.empName%></a>
+  <a class="del-btn" href="employee?id=<%= emplist._id %>&ui_action=delEmp" title="Delete this employee">Delete</a>
+</tr> 
+<% }); %> 
+</div>
+</fieldset>
+<% }  %>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
