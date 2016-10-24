@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 gulp.task('clean', function(){
 
 	return gulp.src('build', {read: false})
-			.pipe(clean());
+			.pipe(clean({force:true}));
 });
 
 gulp.task('lint',function(){
