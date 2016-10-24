@@ -1,4 +1,4 @@
-var Employee = require('../../DTO/EmployeeDTO.js');
+var Employee = require('../../DTO/employeeDTO.js');
 
 function getObjectList(ObjectDTO,callback){
 
