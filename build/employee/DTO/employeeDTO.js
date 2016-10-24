@@ -1,0 +1,1 @@
+var mongoose=require("../../Config/config"),Schema=mongoose.Schema,Employee=new Schema({empName:String});module.exports=mongoose.model("Employee",Employee);
