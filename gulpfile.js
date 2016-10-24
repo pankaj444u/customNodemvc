@@ -114,5 +114,11 @@ gulp.task('serve',function(){
 	});
 });
 
+gulp.task('logs',function(){
 
-gulp.task('default', runsequence('clean','lint','minify-Config','minify-employee','minify-Handler','minify-models','minify-passport','minify-routes','minify-views','minify','image','utils','serve'));
+		gulp.src('logs/*.*')
+			.pipe(gulp.dest('build/logs'));
+});
+
+
+gulp.task('default', runsequence('clean','lint','minify-Config','minify-employee','minify-Handler','minify-models','minify-passport','minify-routes','minify-views','minify','image','utils','logs','serve'));
