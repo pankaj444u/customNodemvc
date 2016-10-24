@@ -1,1 +1,0 @@
-var login=require("./login"),signup=require("./signup"),User=require("../models/user");module.exports=function(e){e.serializeUser(function(e,i){i(null,e)}),e.deserializeUser(function(e,i){i(null,e)}),login(e),signup(e)};

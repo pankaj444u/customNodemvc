@@ -1,1 +1,0 @@
-var FacebookStrategy=require("passport-facebook").Strategy;module.exports=function(e){var c="646849658748331",t="4bac711ac48ddbd751e6e8fca27ec683";e.use(new FacebookStrategy({clientID:c,clientSecret:t,callbackURL:"http://localhost:4444/auth/facebook/callback"},function(e,c,t,a){process.nextTick(function(){return a(null,t)})}))};
