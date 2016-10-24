@@ -1,4 +1,4 @@
-var BaseDAO = require('../../BaseDAO.js');
+var BaseDAO = require('../../BaseDao.js');
 var EmployeeQueryHelper = require('../DAO/Helper/EmployeeQueryHelper.js');
 
 
