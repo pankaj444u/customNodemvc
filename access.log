@@ -1,0 +1,14 @@
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:26 GMT] "GET /employee HTTP/1.1" 302 68 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:26 GMT] "GET /login HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:26 GMT] "GET /favicon.ico HTTP/1.1" 302 40 "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:26 GMT] "GET /login HTTP/1.1" 304 - "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:33 GMT] "GET /login HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:33 GMT] "GET /favicon.ico HTTP/1.1" 302 40 "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:33 GMT] "GET /login HTTP/1.1" 304 - "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:47 GMT] "POST /login HTTP/1.1" - - "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:47 GMT] "GET /favicon.ico HTTP/1.1" 302 40 "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+127.0.0.1 - - [Wed, 01 Jul 2015 07:41:47 GMT] "GET /login HTTP/1.1" 304 - "http://localhost:4444/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36"
+[0mGET /employee [36m302 [0m6.160 ms - 68[0m
+[0mGET /login [36m304 [0m2.671 ms - -[0m
+[0mGET /favicon.ico [36m302 [0m1.561 ms - 40[0m
+[0mGET /login [36m304 [0m3.204 ms - -[0m
