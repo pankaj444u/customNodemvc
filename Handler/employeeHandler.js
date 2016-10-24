@@ -1,5 +1,5 @@
 var employeeMgr = require('../employee/employeeMgr.js');
-var EmployeeDTO = require('../employee/DTO/EmployeeDTO.js');
+var EmployeeDTO = require('../employee/DTO/employeeDTO.js');
 var url = require('url');
 
 exports.execute = function(req,res,next){
