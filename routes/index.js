@@ -14,6 +14,33 @@ module.exports= function(passport){
       res.render('index', { user: req.user });
     });
 
+   router.get('/confbooking', ensureAuthenticated, function(req, res){
+      console.log(req.user);
+      
+      res.render('confbooking', { user: req.user });
+    });
+
+    router.post('/postconf', ensureAuthenticated, function(req, res){
+      console.log(req.body);
+      console.log(' --------------------------------------');
+      console.log(req.user);
+      res.json('complete');
+      res.end();
+    });
+
+
+
+    router.get('/info', ensureAuthenticated, function(req, res){
+      console.log(req.user);
+      
+      res.json(req.user);
+    });
+
+    router.get('/test', ensureAuthenticated, function(req, res){
+      console.log(req.user);
+      res.render('test', { user: req.user });
+    });
+
     router.get('/account', ensureAuthenticated, function(req, res){
       console.log(req.user);
       res.render('account', { user: req.user });

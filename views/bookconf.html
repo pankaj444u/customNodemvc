@@ -1,0 +1,297 @@
+<html ng-app="myApp">
+<body>
+<p>
+      <a href="/employee?ui_action=getEmpList">Home</a> | 
+      <!--<a href="/account">Account</a> | -->
+      <a href="/bookconf">Book Conference</a> |
+      <a href="/logout">Log Out</a>
+</p>
+<strong>id</strong>: <%= user._id %><br>
+<strong>email</strong>: <%= user.username %><br>
+
+<fieldset>
+<legend>Book Conference</legend>
+
+<!--<div ng-controller="bookController"> 
+<select ng-init="ddlconf = confMaster[0]" ng-model="ddlconf" ng-options="conf.name for conf in confMaster" ></select>
+{{ddlconf.name}}
+PPPP
+{{ddlconf.floor}}
+</div>-->
+
+
+<div ng-controller="BookConfController" >
+    <input ng-model="user" type="hidden"/>
+    <div>
+      <select  ng-model="ddlconf" ng-options="conf.name for conf in confMaster" ></select>
+      {{ddlconf.name}}
+      PPPP
+      {{ddlconf.floor}}
+    </div>
+    <br>
+    <div> 
+      <input ng-model="frmDate" date-format="yyyy-MM-dd HH:mm a" datetime-picker hour="23" minute='59' size="30" />
+    </div>
+    <br>
+    <div> 
+      <input ng-model="toDate" date-format="yyyy-MM-dd HH:mm a" datetime-picker hour="23" minute='59' size="30" />
+    </div>
+   <br>
+    <!--<div >
+       <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+
+  
+  
+  <div uib-timepicker ng-model="frmtime" ng-change="changed()" ng-readonly="" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+    <pre class="alert alert-info">Time is: {{frmtime | date:'shortTime' }}</pre>
+
+
+  <div uib-timepicker ng-model="totime" ng-change="changed()" ng-readonly="" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+
+  <pre class="alert alert-info">Time is: {{totime | date:'shortTime' }}</pre>-->
+
+  <button type="button" class="btn btn-danger" ng-click="book()">Book</button>
+
+</div>
+
+<style>
+  .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+</style>
+
+
+</fieldset>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>-->
+    
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="angularjs-datetime-picker.js"></script>
+    <link rel="stylesheet" href="angularjs-datetime-picker.css" />
+<script>
+
+    var app = angular.module('myApp',['angularjs-datetime-picker']);
+    app.controller('BookConfController',function($scope, $filter, $http) {
+      
+      $http.get('/info').then(function(res){
+        $scope.user = res.data;
+      });
+      
+      var today = $filter('date')(new Date(), 'yyyy/MM/dd') + " " + $filter('date')(new Date(), 'shortTime');
+      $scope.frmDate = today;
+      $scope.toDate = today;
+      $scope.confMaster = [
+        {name : "Select", floor : "0"},
+        {name : "SAMEPAGE", floor : "7"},
+        {name : "WIKI", floor : "7"},
+        {name : "EXCELLENCE", floor : "7"}
+    ];
+
+    $scope.ddlconf = $scope.confMaster[0];
+
+    $scope.book = function(){
+      console.log($scope.ddlconf);
+      console.log($scope.frmDate);
+      console.log($scope.toDate);
+      console.log($scope.user);
+    }
+  });
+</script>
+
+<!--<script> 
+angular.module('myapp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+angular.module('myapp')
+  .controller('BookConfController', function ($scope, $log, $filter) {
+  //$scope.dt = new Date();
+$scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dt = null;
+  };
+
+  $scope.inlineOptions = {
+    customClass: getDayClass,
+    minDate: new Date(),
+    showWeeks: true
+  };
+
+  $scope.dateOptions = {
+    dateDisabled: disabled,
+    formatYear: 'yy',
+    maxDate: new Date(2020, 5, 22),
+    minDate: new Date(),
+    startingDay: 1
+  };
+
+  // Disable weekend selection
+  function disabled(data) {
+    var date = data.date,
+      mode = data.mode;
+    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+  }
+
+  $scope.toggleMin = function() {
+    $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+    $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+  };
+
+  $scope.toggleMin();
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.open2 = function() {
+    $scope.popup2.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.popup2 = {
+    opened: false
+  };
+
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  var afterTomorrow = new Date();
+  afterTomorrow.setDate(tomorrow.getDate() + 1);
+  $scope.events = [
+    {
+      date: tomorrow,
+      status: 'full'
+    },
+    {
+      date: afterTomorrow,
+      status: 'partially'
+    }
+  ];
+
+  function getDayClass(data) {
+    var date = data.date,
+      mode = data.mode;
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  }
+
+    console.log($filter('date')(new Date(), 'shortTime'));
+
+    $scope.confMaster = [
+        {name : "Select", floor : "0"},
+        {name : "SAMEPAGE", floor : "7"},
+        {name : "WIKI", floor : "7"},
+        {name : "EXCELLENCE", floor : "7"}
+    ];
+
+    $scope.ddlconf = $scope.confMaster[0];
+
+   var d = new Date();
+    d.setHours( 09 );
+    d.setMinutes( 30 );
+    $scope.frmtime = d;
+    var t = new Date();
+    t.setHours( 10 );
+    t.setMinutes( 30 );
+    $scope.totime = t;
+  
+  //$scope.mytime = new Date();
+  //$scope.mytime = null; 
+  $scope.hstep = 1;
+  $scope.mstep = 30;
+
+  $scope.options = {
+    hstep: [0, 1, 2, 3],
+    mstep: [0, 15, 30, 45]
+  };
+
+  $scope.ismeridian = true;
+  
+  /*$scope.toggleMode = function() {
+    $scope.ismeridian = ! $scope.ismeridian;
+  };
+
+  $scope.update = function() {
+    var d = new Date();
+    d.setHours( 14 );
+    d.setMinutes( 0 );
+    $scope.mytime = d;
+  };*/
+
+  $scope.changedfrm = function () {
+    $log.log('Time changed to: ' + $scope.frmtime);
+  };
+  $scope.changedto = function () {
+    $log.log('Time changed to: ' + $scope.totime);
+  };
+
+  $scope.clear = function() {
+    $scope.frmtime = null;
+    $scope.totime = null;
+  };
+
+$scope.book = function(){
+    console.log($scope.ddlconf);
+    var frmtime = $filter('date')($scope.frmtime, 'shortTime')
+    //console.log(frmtime.getHours() + '   minutes   ' + frmtime.getMinutes());
+    var totime = $filter('date')($scope.totime, 'shortTime');
+    console.log(frmtime + " < frm  to >" + totime);
+    var selectdate = $filter('date')($scope.dt, 'yyyy/MM/dd');
+    console.log(selectdate);
+    var frm = selectdate +" " + frmtime;
+    console.log(frm);
+    frm = new Date(frm);
+    console.log(frm);
+
+    
+
+}
+});
+
+
+</script>-->
+
+
+
+
+</body>
+</html>

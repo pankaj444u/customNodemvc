@@ -9,7 +9,13 @@ var Map = [
         {ui_action:"/employee/edit", handler:"./Handler/employeeHandler.js"},
         {ui_action:"/employee/update", handler:"./Handler/employeeHandler.js"},
         {ui_action:"/employee/destroy", handler:"./Handler/employeeHandler.js"},
-        {ui_action:"/project", handler:"./Handler/projectHandler.js"}
+        {ui_action:"/project", handler:"./Handler/projectHandler.js"},
+
+
+        {ui_action:"saveBooking", handler:"../Handler/confHandler.js"},
+
+
+
       ]
 
 
