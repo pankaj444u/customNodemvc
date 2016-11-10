@@ -207,3 +207,11 @@
 {"level":"error","message":"Error message {\"error\":\"Failed to lookup view \\\"index\\\" in views directory \\\"E:\\\\NodeJS\\\\PankajNode\\\\CustomMVC_Node\\\\build\\\\views\\\"\"}","timestamp":"2016-08-01T05:44:13.755Z"}
 {"level":"error","message":"Error message {\"error\":\"Failed to lookup view \\\"index\\\" in views directory \\\"E:\\\\NodeJS\\\\PankajNode\\\\CustomMVC_Node\\\\build\\\\views\\\"\"}","timestamp":"2016-10-07T10:35:49.838Z"}
 {"level":"error","message":"Error message {\"error\":\"Failed to lookup view \\\"index\\\" in views directory \\\"E:\\\\NodeJS\\\\PankajNode\\\\CustomMVC_Node\\\\build\\\\views\\\"\"}","timestamp":"2016-10-24T06:31:52.331Z"}
+{"level":"error","message":"Error message {\"error\":\"Cannot read property 'handler' of undefined\"}","timestamp":"2016-11-09T11:49:18.427Z"}
+{"level":"error","message":"Error message {\"error\":\"Cannot read property 'handler' of undefined\"}","timestamp":"2016-11-09T11:59:25.325Z"}
+{"level":"error","message":"Error message {\"error\":\"Cannot read property 'handler' of undefined\"}","timestamp":"2016-11-10T07:25:22.856Z"}
+{"level":"error","message":"Error message {\"error\":\"Cannot read property 'handler' of undefined\"}","timestamp":"2016-11-10T07:25:27.998Z"}
+{"level":"error","message":"Error message {\"error\":\"localStorage is not defined\"}","timestamp":"2016-11-10T07:34:03.275Z"}
+{"level":"error","message":"Error message {\"error\":\"Cannot read property 'handler' of undefined\"}","timestamp":"2016-11-10T09:14:37.261Z"}
+{"level":"error","message":"Error message {\"error\":\"Cannot read property 'handler' of undefined\"}","timestamp":"2016-11-10T09:15:38.653Z"}
+{"level":"error","message":"Error message {\"error\":\"invalid json\"}","timestamp":"2016-11-10T09:45:21.080Z"}

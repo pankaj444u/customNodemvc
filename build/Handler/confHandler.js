@@ -1,0 +1,1 @@
+var url=require("url");exports.execute=function(e,r,u){null!=url.parse(e.url).pathname&&"saveBooking"==ui_Action&&console.log("Hi there....")};
