@@ -15,20 +15,8 @@ module.exports= function(passport){
     });
 
    router.get('/confbooking', ensureAuthenticated, function(req, res){
-      console.log(req.user);
-      
       res.render('confbooking', { user: req.user });
     });
-
-    router.post('/postconf', ensureAuthenticated, function(req, res){
-      console.log(req.body);
-      console.log(' --------------------------------------');
-      console.log(req.user);
-      res.json('complete');
-      res.end();
-    });
-
-
 
     router.get('/info', ensureAuthenticated, function(req, res){
       console.log(req.user);

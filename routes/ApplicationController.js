@@ -7,7 +7,11 @@ var url = require('url');
 exports.processRequest= function(req,res,next){
   
     queryObject = url.parse(req.url,true).query;
+    //console.log(queryObject);
     ui_Action = queryObject.ui_action;
+    console.log(ui_Action);
+    //return;
+
     if(ui_Action == "" || ui_Action == null)
     {
     	ui_Action = req.body.ui_action;

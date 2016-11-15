@@ -57,7 +57,6 @@ exports.getObjectList = function(QueryHelper, ObjectDTO, callback){
 
 exports.createObject = function(QueryHelper, ObjectDTO, callback){
 
-	
 	QueryHelper.createObject(ObjectDTO,function(err, ObjectDTO){
 		if(err) callback(err);
 

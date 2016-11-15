@@ -7,11 +7,11 @@
 </p>
 <strong>id</strong>: <%= user._id %><br>
 <strong>email</strong>: <%= user.username %><br>
-
+<!--<form action="saveEmp" method="post" accept-charset="utf-8">-->
 <fieldset>
 <legend>Book Conference</legend>
 <div id="conf-form" >
-    <input ng-model="user" type="hidden"/>
+    <input ng-model="action" type="hidden"/>
     <div>
       <select  ng-model="ddlconf" ng-options="conf.name for conf in confMaster" ></select>
       {{ddlconf.name}}
@@ -28,9 +28,48 @@
     </div>
    <br>
    <button type="submit"  class="btn btn-danger" ng-click="book()">Book</button>
+
+   <br/ >
+
+   <div>
+     <table>  
+       <thead>
+	<tr>
+		<th>Employee Name</th>
+		<th>Conference Name</th>
+		<th>From</th>
+		<th>To</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="conf in conflist">
+         <td>{{conf.empName}}</td>
+         <td>{{conf.confName}}</td>
+         <td>{{conf.frmDate}}</td>
+         <td>{{conf.toDate}}</td>
+       </tr>
+	</tbody>
+       
+     </table>
+   </div>
 </div>
 
 </fieldset>
+<!--</form>-->
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -41,10 +80,16 @@
     var app = angular.module('myApp',['angularjs-datetime-picker']);
     app.controller('BookConfController',function($scope, $filter, $http) {
       
+    $http.get('/postconf?ui_action=getConfList').then(function(res){
+      console.log(res.data);
+      $scope.conflist = res.data;
+    })
+
       /*$http.get('/info').then(function(res){
         $scope.user = res.data;
       });*/
-      
+      $scope.action = "saveConf";
+
       var today = $filter('date')(new Date(), 'yyyy/MM/dd') + " " + $filter('date')(new Date(), 'shortTime');
       $scope.frmDate = today;
       $scope.toDate = today;
@@ -58,11 +103,12 @@
     $scope.ddlconf = $scope.confMaster[0];
 
     $scope.book = function(){
-      console.log($scope.ddlconf.name);
+      //console.log($scope.ddlconf.name);
+      //console.log($scope.action);
 
       var obj = {"frmDate": $scope.frmDate, "toDate":  $scope.toDate, "confName": $scope.ddlconf.name};
 
-      $http.post('/postconf',obj).success(function(response) {
+      $http.post('/postconf?ui_action='+$scope.action,obj).success(function(response) {
            console.log("success");
           }).error(function(err){
              console.log("failure")

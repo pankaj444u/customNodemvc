@@ -12,7 +12,8 @@ var Map = [
         {ui_action:"/project", handler:"./Handler/projectHandler.js"},
 
 
-        {ui_action:"saveBooking", handler:"../Handler/confHandler.js"},
+        {ui_action:"saveConf", handler:"../Handler/confHandler.js"},
+        {ui_action:"getConfList", handler:"../Handler/confHandler.js"},
 
 
 
