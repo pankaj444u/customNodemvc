@@ -12,8 +12,8 @@ module.exports = function(passport){
     passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    //callbackURL: "http://localhost:4444/auth/facebook/callback"
-    callbackURL: "http://ec2-52-24-171-150.us-west-2.compute.amazonaws.com:9000/auth/facebook/callback"
+    callbackURL: "http://localhost:9000/auth/facebook/callback"
+    //callbackURL: "http://ec2-52-24-171-150.us-west-2.compute.amazonaws.com:9000/auth/facebook/callback"
     },
           function(accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
@@ -21,6 +21,7 @@ module.exports = function(passport){
               // represent the logged-in user.  In a typical application, you would want
               // to associate the Facebook account with a user record in your database,
               // and return that user instead.
+              //console.log(profile);
               return done(null, profile);
             });
           }

@@ -68,6 +68,7 @@ module.exports= function(passport){
     router.get('/auth/facebook/callback', 
       passport.authenticate('facebook', { failureRedirect: '/login' }),
       function(req, res) {
+        console.log(req);
         res.redirect('/employee?ui_action=getEmpList');
       });
 

@@ -78,12 +78,13 @@ table tr:nth-child(even) {
 <script>
 
     var app = angular.module('myApp',['angularjs-datetime-picker']);
-    app.controller('BookConfController',function($scope, $filter, $http) {
-      
-    $http.get('/postconf?ui_action=getConfList').then(function(res){
-      console.log(res.data);
-      $scope.conflist = res.data;
-    })
+    app.controller('BookConfController',function($scope, $filter, $http, myFactory) {
+       $scope.conflist = {};
+      myFactory.getList().success(function(response){
+          $scope.conflist = response;
+      });
+
+      console.log($scope.conflist);
 
       /*$http.get('/info').then(function(res){
         $scope.user = res.data;
@@ -110,17 +111,25 @@ table tr:nth-child(even) {
 
       $http.post('/postconf?ui_action='+$scope.action,obj).success(function(response) {
            console.log("success");
+            myFactory.getList().success(function(response){
+              $scope.conflist = response;
+            });
           }).error(function(err){
              console.log("failure")
           });
-
-      
-      
-
-     
-
     }
   });
+
+  app.factory('myFactory', function($http){
+    var factoryObj = {};
+    factoryObj.getList = function(){
+      return $http.get('/postconf?ui_action=getConfList');
+    }
+
+    return factoryObj;
+    
+  });
+
 </script>
 </body>
 </html>
