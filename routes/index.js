@@ -58,19 +58,27 @@ module.exports= function(passport){
       failureFlash : true  
     }));
 
-    router.get('/auth/facebook',
-      passport.authenticate('facebook'),
-      function(req, res){
-        // The request will be redirected to Facebook for authentication, so this
-        // function will not be called.
-      });
+    // router.get('/auth/facebook',
+    //   passport.authenticate('facebook'),
+    //   function(req, res){
+    //     // The request will be redirected to Facebook for authentication, so this
+    //     // function will not be called.
+    //   });
 
-    router.get('/auth/facebook/callback', 
-      passport.authenticate('facebook', { failureRedirect: '/login' }),
-      function(req, res) {
-        console.log(req);
-        res.redirect('/employee?ui_action=getEmpList');
-      });
+    router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+    router.get('/auth/facebook/callback',
+			passport.authenticate('facebook', {
+				successRedirect : '/employee?ui_action=getEmpList',
+				failureRedirect : '/login'
+			}));
+
+    // router.get('/auth/facebook/callback', 
+    //   passport.authenticate('facebook', { failureRedirect: '/login' }),
+    //   function(req, res) {
+    //     console.log(req);
+    //     res.redirect('/employee?ui_action=getEmpList');
+    //   });
 
     router.get('/logout', function(req, res){
       req.logout();
